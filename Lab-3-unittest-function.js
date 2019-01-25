@@ -10,7 +10,7 @@ function checkHumbrId(humberId){
   "use strict";
   let validId = false; // a flag variable
 
-  let checkId = /(n|N)\d{8}/;
+  let checkId = /^(n|N)\d{8}$/;
   if(humberId ===""){
      validId = false;
    } else if (checkId.test(humberId)){
@@ -24,7 +24,7 @@ function test__checkHumbrId(valueIn,expected){
     let msg = "<strong>Value test: </strong>" + valueIn
             + " <strong> Expected result: </strong> " + expected
             + "<strong> expected: </strong> ";
-    if(result){
+    if(result == expected){
        msg +="<span style=color:green;font-weight:bold;>" +"===PASSED===" + "</span></br>";
     }else{
        msg +="<span style=color:red;font-weight:bold;>" + "xxxFAILEDxxx" + "</span></br>";
@@ -33,7 +33,7 @@ function test__checkHumbrId(valueIn,expected){
     msgBox.innerHTML += msg;
 }
 //test to pass
-test__checkHumbrId("N12345678",true);
+test__checkHumbrId("N12345678",false);
 //test to fail
 test__checkHumbrId("",false);
 //bondary testing less numbers
